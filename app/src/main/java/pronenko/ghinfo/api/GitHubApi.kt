@@ -3,6 +3,7 @@ package pronenko.ghinfo.api
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import pronenko.ghinfo.models.GitHubUser
+import pronenko.ghinfo.models.GitHubUsersResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -13,7 +14,7 @@ interface GitHubApi {
     @GET("search/users")
     suspend fun searchUsers(
         @Query("q") query: String
-    ): List<GitHubUser>
+    ): GitHubUsersResponse
     @GET("users/{login}/followers")
     suspend fun getFollowers(
         @Path("login") login: String

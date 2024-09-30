@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GHInfo</string>
+    <string name="search">поиск</string>
+    <string name="profile">профиль</string>
+    <string name="search_field">поиск...</string>
+    <string name="no_data">Репозитории отсутствуют</string>
 </resources>

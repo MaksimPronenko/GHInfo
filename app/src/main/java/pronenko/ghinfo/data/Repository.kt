@@ -9,7 +9,8 @@ class Repository {
     private suspend fun getFollowers(login: String) = retrofitGitHub.getFollowers(login)
 
     suspend fun searchUsers(query: String): List<User> {
-        val usersGitHub: List<GitHubUser> = retrofitGitHub.searchUsers(query)
+        val response = retrofitGitHub.searchUsers(query)
+        val usersGitHub: List<GitHubUser> = response.items
         val users: MutableList<User> = mutableListOf()
 
         usersGitHub.forEach {
@@ -17,7 +18,10 @@ class Repository {
                 User(
                     login = it.login,
                     avatar = it.avatar_url,
-                    followersCount = getFollowers(it.login).size
+                    followersCount = getFollowers(
+                        "maks"
+//                        it.login
+                    ).size
                 )
             )
         }
