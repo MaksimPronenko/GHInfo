@@ -3,5 +3,12 @@
     <string name="search">поиск</string>
     <string name="profile">профиль</string>
     <string name="search_field">поиск...</string>
-    <string name="no_data">Репозитории отсутствуют</string>
+    <string name="repositories">Репозитории </string>
+    <string name="avatar">аватар</string>
+    <string name="login">логин</string>
+    <string name="followers">подписчики</string>
+    <string name="updated">Обновлён</string>
+    <string name="default_branch">Ветка по умолчанию:</string>
+    <string name="forks_count">Количество форков:</string>
+    <string name="stars_count">Количество звёзд:</string>
 </resources>

@@ -54,36 +54,12 @@ class MainActivity : ComponentActivity() {
                 composable("$SCREEN_DETAIL/{$KEY_LOGIN}")
                 { backStackEntry ->
                     val city = backStackEntry.arguments?.getString(KEY_LOGIN) ?: ""
-                    DetailsScreen(innerPadding, navController, city)
+                    DetailsScreen(innerPadding, city)
                 }
                 composable(SCREEN_PROFILE) { ProfileScreen(innerPadding, navController) }
             }
         }
     }
-
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContent {
-//            GHInfoTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
-//            }
-//        }
-//    }
-//}
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier
-//    )
-//}
 
     @Composable
     fun BottomNavigationBar(navController: NavController) {
@@ -101,7 +77,13 @@ class MainActivity : ComponentActivity() {
                         Image(
                             painter = painterResource(id = R.drawable.search),
                             contentDescription = null,
-                            colorFilter = ColorFilter.tint(Color.Black)
+                            colorFilter = ColorFilter.tint(
+                                color = if (currentRoute == SCREEN_SEARCH) {
+                                    Color.Blue
+                                } else {
+                                    Color.Black
+                                }
+                            )
                         )
                     },
                     label = {
@@ -126,7 +108,13 @@ class MainActivity : ComponentActivity() {
                         Image(
                             painter = painterResource(id = R.drawable.profile),
                             contentDescription = null,
-                            colorFilter = ColorFilter.tint(Color.Black)
+                            colorFilter = ColorFilter.tint(
+                                color = if (currentRoute == SCREEN_PROFILE) {
+                                    Color.Blue
+                                } else {
+                                    Color.Black
+                                }
+                            )
                         )
                     },
                     label = {
@@ -150,11 +138,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    GHInfoTheme {
-//        Greeting("Android")
-//    }
-//}

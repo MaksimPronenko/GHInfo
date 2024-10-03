@@ -1,16 +1,16 @@
 package pronenko.ghinfo.data
 
 import pronenko.ghinfo.api.retrofitGitHub
+import pronenko.ghinfo.models.GitHubRepo
 import pronenko.ghinfo.models.GitHubUser
+import pronenko.ghinfo.models.GitHubUsersResponse
 import pronenko.ghinfo.models.User
 
 class Repository {
 
-    private suspend fun getFollowers(login: String) = retrofitGitHub.getFollowers(login)
-
     suspend fun searchUsers(query: String): List<User> {
-        val response = retrofitGitHub.searchUsers(query)
-        val usersGitHub: List<GitHubUser> = response.items
+        val response: GitHubUsersResponse? = retrofitGitHub.searchUsers(query)
+        val usersGitHub: List<GitHubUser> = response?.items ?: emptyList()
         val users: MutableList<User> = mutableListOf()
 
         usersGitHub.forEach {
@@ -19,13 +19,38 @@ class Repository {
                     login = it.login,
                     avatar = it.avatar_url,
                     followersCount = getFollowers(
-                        "maks"
-//                        it.login
+                        it.login
                     ).size
                 )
             )
         }
 
         return users.toList()
+    }
+
+    private suspend fun getFollowers(login: String): List<GitHubUser> {
+        kotlin.runCatching {
+            retrofitGitHub.getFollowers(login)
+        }.fold(
+            onSuccess = {
+                return it ?: emptyList()
+            },
+            onFailure = {
+                return emptyList()
+            }
+        )
+    }
+
+    suspend fun getRepositories(login: String): List<GitHubRepo> {
+        kotlin.runCatching {
+            retrofitGitHub.getRepositories(login)
+        }.fold(
+            onSuccess = {
+                return it ?: emptyList()
+            },
+            onFailure = {
+                return emptyList()
+            }
+        )
     }
 }

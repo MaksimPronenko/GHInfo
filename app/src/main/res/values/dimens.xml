@@ -9,26 +9,30 @@
     <dimen name="button_height">40dp</dimen>
     <dimen name="button_text_padding_start">18dp</dimen>
     <dimen name="button_text_padding_end">18dp</dimen>
-    <dimen name="details_top_field_height">60dp</dimen>
-    <dimen name="details_top_text_padding_start">18dp</dimen>
-    <dimen name="garbage_button_padding_end">4dp</dimen>
-    <dimen name="weather_column_padding_vertical">16dp</dimen>
-    <dimen name="error_box_height">140dp</dimen>
-    <dimen name="error_box_width">240dp</dimen>
-    <dimen name="error_box_corners">10dp</dimen>
-    <dimen name="error_box_padding">24dp</dimen>
-    <dimen name="weather_data_text_padding_start">18dp</dimen>
-    <dimen name="weather_data_text_padding_end">18dp</dimen>
 
-    <dimen name="text_size">16sp</dimen>
-    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_main">16sp</dimen>
+    <dimen name="text_size_table_header">11sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
 
     <dimen name="screen_main_padding">16dp</dimen>
+    <dimen name="padding_main_half">8dp</dimen>
     <dimen name="search_field_height">60dp</dimen>
     <dimen name="search_field_border_width">3dp</dimen>
     <dimen name="search_border_corners">12dp</dimen>
+    <dimen name="search_field_padding_start">16dp</dimen>
     <dimen name="search_field_padding_end">16dp</dimen>
     <dimen name="spacer_height">16dp</dimen>
+    <dimen name="table_header_height">28dp</dimen>
+    <dimen name="table_header_corners">8dp</dimen>
+    <dimen name="table_users_first_column_width">60dp</dimen>
+    <dimen name="table_users_last_column_width">80dp</dimen>
     <dimen name="user_data_row_height">60dp</dimen>
     <dimen name="avatar_size">44dp</dimen>
+    <dimen name="table_horizontal_spacer">2dp</dimen>
+    <dimen name="table_vertical_spacer">2dp</dimen>
+    <dimen name="search_button_corners">8dp</dimen>
+    <dimen name="details_title_padding_horisontal">24dp</dimen>
+    <dimen name="details_title_padding_vertical">8dp</dimen>
+    <dimen name="repositories_vertical_spacer">8dp</dimen>
+    <dimen name="repository_corners">8dp</dimen>
 </resources>
