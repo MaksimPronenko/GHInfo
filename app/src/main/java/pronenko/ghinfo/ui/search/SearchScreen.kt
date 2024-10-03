@@ -1,5 +1,6 @@
 package pronenko.ghinfo.ui.search
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -37,11 +38,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
+import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import org.koin.androidx.compose.koinViewModel
 import pronenko.ghinfo.R
+import pronenko.ghinfo.domain.getAuthorizationUrl
 import pronenko.ghinfo.models.User
 import pronenko.ghinfo.ui.common.HeaderText
 import pronenko.ghinfo.ui.common.IconButton
@@ -75,6 +78,7 @@ fun SearchScreen(innerPadding: PaddingValues, navController: NavHostController) 
 
     LaunchedEffect(Unit) {
         if (queryState.value.text.isNotBlank()) viewModel.search(queryState.value)
+        Log.d("AuthorizationUrl", getAuthorizationUrl())
     }
 
     Column(
@@ -282,10 +286,9 @@ fun UserData(
 fun Avatar(
     data: String?,
     contentDescription: String? = null,
-    contentScale: ContentScale = ContentScale.Fit
+    contentScale: ContentScale = ContentScale.Fit,
+    avatarSize: Dp = dimensionResource(id = R.dimen.avatar_size)
 ) {
-    val avatarSize = dimensionResource(id = R.dimen.avatar_size)
-
     if (data.isNullOrBlank()) {
         Image(
             painter = painterResource(id = R.drawable.baseline_face_24),

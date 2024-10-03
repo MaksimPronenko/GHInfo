@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
                     val city = backStackEntry.arguments?.getString(KEY_LOGIN) ?: ""
                     DetailsScreen(innerPadding, city)
                 }
-                composable(SCREEN_PROFILE) { ProfileScreen(innerPadding, navController) }
+                composable(SCREEN_PROFILE) { ProfileScreen(innerPadding) }
             }
         }
     }

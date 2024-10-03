@@ -5,9 +5,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import pronenko.ghinfo.models.GitHubRepo
 import pronenko.ghinfo.models.GitHubUser
 import pronenko.ghinfo.models.GitHubUsersResponse
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -26,6 +28,9 @@ interface GitHubApi {
     suspend fun getRepositories(
         @Path("login") login: String
     ): List<GitHubRepo>?
+
+    @GET("user")
+    suspend fun getUserProfile(@Header("Authorization") authHeader: String): Response<GitHubUser>
 }
 
 val retrofitGitHub: GitHubApi = Retrofit

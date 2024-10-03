@@ -11,4 +11,6 @@
     <string name="default_branch">Ветка по умолчанию:</string>
     <string name="forks_count">Количество форков:</string>
     <string name="stars_count">Количество звёзд:</string>
+    <string name="email">email:</string>
+    <string name="public_repos">Количество публичных репозиториев:</string>
 </resources>

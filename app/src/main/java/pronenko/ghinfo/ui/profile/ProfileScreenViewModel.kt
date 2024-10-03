@@ -1,18 +1,13 @@
 package pronenko.ghinfo.ui.profile
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
-import pronenko.ghinfo.data.Repository
+import pronenko.ghinfo.models.GitHubUser
 
-class ProfileScreenViewModel(val repository: Repository): ViewModel() {
-    var localitiesStateFlow = MutableStateFlow<List<String>>(value = emptyList())
+class ProfileScreenViewModel: ViewModel() {
+    var profileStateFlow = MutableStateFlow<GitHubUser?>(value = null)
 
-    fun getSavedCities() {
-        viewModelScope.launch(Dispatchers.IO) {
-//            localitiesStateFlow.value = repository.getAllLocalities()
-        }
+    fun updateProfileState(userProfile: GitHubUser?) {
+        profileStateFlow.value = userProfile
     }
 }

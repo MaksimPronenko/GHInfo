@@ -16,30 +16,15 @@ import pronenko.ghinfo.ui.profile.ProfileScreenViewModel
 
 class App : Application() {
 
-//    private lateinit var db: AppDatabase
-
     override fun onCreate() {
         super.onCreate()
-
-//        db = Room.databaseBuilder(
-//            applicationContext,
-//            AppDatabase::class.java,
-//            "db"
-//        )
-//            .fallbackToDestructiveMigration()
-//            .build()
 
         startKoin {
             androidContext(this@App)
             modules(
                 module{
-//                    single<WeatherDao> {
-//                        provideWeatherDao(context = get())
-//                    }
                     single<Repository> {
-                        Repository(
-//                            dao = get()
-                        )
+                        Repository()
                     }
                     single<SharedPreferences> {
                         provideSharedPreferences(context = get())
@@ -53,17 +38,14 @@ class App : Application() {
                     viewModel<DetailsScreenViewModel> {
                         DetailsScreenViewModel(repository = get())
                     }
-                    viewModel<ProfileScreenViewModel> {
-                        ProfileScreenViewModel(repository = get())
+                    single<ProfileScreenViewModel> {
+                        ProfileScreenViewModel()
                     }
                 }
             )
         }
     }
 
-//    private fun provideWeatherDao(context: Context): WeatherDao {
-//        return (context as App).db.weatherDao()
-//    }
     private fun provideSharedPreferences(context: Context): SharedPreferences {
         return (context as App).getSharedPreferences(LAST_SEARCH, Context.MODE_PRIVATE)
     }
